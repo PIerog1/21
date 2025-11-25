@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+
+             x:Class="MauiApp6.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Pole do wpisania tytułu zadania -->
+            <Entry Text="{Binding TaskTitle}" 
+
+                   Placeholder="Wpisz nowe zadanie..." 
+
+                   ReturnType="Done" />
+
+            <!-- Przycisk dodawania zadania -->
+            <Button Text="Dodaj zadanie" 
+
+                    Command="{Binding AddTaskCommand}" 
+
+                    HorizontalOptions="Fill" />
+
+            <!-- Wyświetlanie liczby zadań -->
+            <Label Text="{Binding TaskCount, StringFormat='Liczba zadań: {0}'}"
+
+                   FontAttributes="Bold"
+
+                   HorizontalOptions="Center" />
+
+            <!-- Lista zadań -->
+            <CollectionView ItemsSource="{Binding Tasks}"
+
+                            VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout Spacing="12" Padding="5">
+                            <CheckBox IsChecked="{Binding IsCompleted}" />
+                            <Label Text="{Binding Title}" 
+
+                                   VerticalTextAlignment="Center"
+
+                                   FontSize="16" />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
+ 
